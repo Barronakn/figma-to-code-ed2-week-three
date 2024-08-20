@@ -1,0 +1,10 @@
+export { default as Activities } from './Activities';
+export { default as Billing } from './Billing';
+export { default as Cards } from './Cards';
+export { default as Dashboard } from './Dashboard';
+export { default as HelpCenter } from './HelpCenter';
+export { default as Invoces } from './Invoces';
+export { default as News } from './News';
+export { default as Notifications } from './Notifications';
+export { default as Reports } from './Reports';
+export { default as Settings } from './Settings';
