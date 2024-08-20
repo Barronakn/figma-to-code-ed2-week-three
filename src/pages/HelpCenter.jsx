@@ -2,7 +2,7 @@ import React from 'react';
 
 const HelpCenter = () => {
     return (
-        <div>
+        <div className="border border-gray p-6">
             HelpCenter
         </div>
     );

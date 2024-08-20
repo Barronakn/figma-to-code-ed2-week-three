@@ -12,27 +12,27 @@ import { Activities, Billing, Cards, Dashboard, HelpCenter, Invoces, News, Notif
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
-  const { activeMenu, themeSettings, currentMode } = useStateContext();
+  const { activeMenu, currentMode } = useStateContext();
 
   return (
-    <div className={currentMode === 'Dark' ? 'dark': ''}>
+    <div className={currentMode === 'Dark' ? 'dark': 'overflow-x-hidden'}>
       <Router>
         <div className="flex relative">
           {activeMenu ? (
-            <div className="w-72 fixed sidebar bg-white">
+            <div className="w-72 fixed sidebar z-50 bg-white">
               <Sidebar />
             </div>
           ) : (
-            <div className="w-0">
+            <div className="w-0 z-50">
               <Sidebar />
             </div>
           )}
           <div className={
-            `bg-white min-h-screen  w-full ${activeMenu 
+            `bg-white min-h-screen ${activeMenu 
               ? 'md:ml-72'
               : 'flex-2'}`}
           >
-            <div className="fixed md:static bg-white navbar w-full">
+            <div className="navbar fixed left-0 w-full z-40 pl-72 pr-22 bg-white dark:bg-dark-blue-1">
               <Navbar />
             </div>
           

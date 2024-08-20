@@ -13,8 +13,13 @@
 }
 
 ::-webkit-scrollbar {
-    width: 14px;
+    width: 10px;
 }
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}
+
 
 ::-webkit-scrollbar-thumb {
     background-color: rgb(216, 216, 216);

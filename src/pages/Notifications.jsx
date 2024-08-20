@@ -2,7 +2,7 @@ import React from 'react';
 
 const Notifications = () => {
     return (
-        <div>
+        <div className="border border-gray p-6">
             Notifications
         </div>
     );

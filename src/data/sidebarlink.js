@@ -1,4 +1,3 @@
-import React from 'react';
 import dashboard from '../assets/icons/home-black.png'
 import news from '../assets/icons/news.png'
 import activities from '../assets/icons/activities.png'
@@ -9,6 +8,7 @@ import billing from '../assets/icons/billing.png'
 import invoces from '../assets/icons/invoice.png'
 import help from '../assets/icons/help.png'
 import settings from '../assets/icons/settings.png'
+import chevron_down from '../assets/icons/chevron-down.png'
 
 export const links = [
   {
@@ -34,6 +34,7 @@ export const links = [
       {
         name: 'reports',
         icon: reports,
+        chevron: chevron_down,
       },
       {
         name: 'notifications',

@@ -4,13 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        14: "14px",
+        xxs: "10px",
       },
       colors: {
         "light-gray" : "#F3F4F6",
         "gray" : "#D1D5DB",
         "dark-gray" : "#6B7280",
-        "dark" : "#6B7280",
         "yellow" : "#F2D604",
         "green" : "#01B130",
         "red" : "#CB0101",
@@ -21,6 +20,14 @@ module.exports = {
       },
       spacing: {
         84: "362px",
+        22: "86px",
+        8.5: "38px",
+      },
+      borderRadius: {
+        10: "10px",
+      },
+      opacity : {
+        7: "7%"
       },
     },
   },

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Reports = () => {
   return (
-    <div>
+    <div className="border border-gray p-6">
       Reports
     </div>
   );
