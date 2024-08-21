@@ -21,7 +21,7 @@ const Sidebar = () => {
       {activeMenu && (
         <div className="flex flex-col gap-9">
           <Link
-            to="/"
+            to="/dashboard"
             onClick={handleCloseSideBar}
             className="flex items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7"
           >

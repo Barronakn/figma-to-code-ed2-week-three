@@ -33,7 +33,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex flex-row gap-3">
-        <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray p-2 rounded-10 px-5 py-2.5">
+        <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-5 py-2.5">
           <span className="text-gray text-xs font-medium">USD</span>
           <img src={chevron_up_down} alt="chevron-up-down-icon" />
         </div>
@@ -50,9 +50,7 @@ const Navbar = () => {
           ) : (
             <div
               onClick={handleToggle}
-              className={`cursor-pointer border border-gray px-5 py-2.5 rounded-10 ${
-                currentMode === "Light" ? "opacity-100" : "opacity-50"
-              }`}
+              className="cursor-pointer border border-gray dark:border-opacity-15 px-5 py-2.5 rounded-10"
             >
               <img src={light_icon} alt="light-icon" />
             </div>
