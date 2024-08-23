@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { links } from "../data/sidebarlink";
-import logo from "../assets/icons/logo.png";
 import { useStateContext } from "../contexts/ContextProvider";
 import avatar from "../data/avatar.png";
 import chevron_down from "../assets/icons/chevron-down.png";
+import login from "../assets/icons/login.png";
+import sign from "../assets/icons/sign.png";
+import Logo from "./Logo";
 
 const Sidebar = () => {
   const { activeMenu, setActiveMenu, handleClick, screenSize, currentColor } =
@@ -25,17 +27,7 @@ const Sidebar = () => {
             onClick={handleCloseSideBar}
             className="flex items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7"
           >
-            <div className="flex flex-row gap-3 items-center justify-center">
-              <div>
-                <img src={logo} alt="logo-tokena" />
-              </div>
-              <div>
-                <h2 className="text-dark-2 text-xs font-bold">Tokena</h2>
-                <span className="text-blue text-xxs font-medium">
-                  Finance app
-                </span>
-              </div>
-            </div>
+            <Logo />
           </Link>
 
           <div className="flex flex-col gap-84">
@@ -72,28 +64,53 @@ const Sidebar = () => {
                   ))}
                 </div>
               ))}
+
+              <div>
+                <NavLink
+                  to="/sign"
+                  className="flex flex-row justify-between items-center text-xs font-bold px-2 py-3 hover:bg-blue hover:text-white rounded-10"
+                >
+                  <div className="flex flex-row items-center gap-1.5">
+                    <div>
+                      <img className="w-5 h-5" src={sign} alt="Sign-icon" />
+                    </div>
+                    <span>Sign</span>
+                  </div>
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  className="flex flex-row justify-between items-center text-xs font-bold px-2 py-3 hover:bg-blue hover:text-white rounded-10"
+                >
+                  <div className="flex flex-row items-center gap-1.5">
+                    <div>
+                      <img className="w-4 h-4" src={login} alt="Login-icon" />
+                    </div>
+                    <span>Login</span>
+                  </div>
+                </NavLink>
+              </div>
             </div>
 
             <div
               className="flex items-center gap-2 cursor-pointer"
               onClick={() => handleClick("userProfile")}
             >
-                <div className="flex flex-row gap-2">
-                  <div>
-                    <img className="rounded-full w-8 h-8" src={avatar} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium">John Doe</p>
-                    <span className="text-dark-gray text-xs">
-                      johndoe8@gmail.com
-                    </span>
-                  </div>
+              <div className="flex flex-row gap-2">
+                <div>
+                  <img className="rounded-full w-8 h-8" src={avatar} />
                 </div>
                 <div>
-                  <img src={chevron_down} alt="chevron_down-icon" />
+                  <p className="text-xs font-medium">John Doe</p>
+                  <span className="text-dark-gray text-xs">
+                    johndoe8@gmail.com
+                  </span>
                 </div>
               </div>
+              <div>
+                <img src={chevron_down} alt="chevron_down-icon" />
+              </div>
             </div>
+          </div>
         </div>
       )}
     </div>

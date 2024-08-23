@@ -5,7 +5,7 @@ import chevron_right from "../assets/icons/chevron-right.png";
 const Dashboard = () => {
   return (
     <div className="pt-22 px-3.5 bg-white dark:bg-dark-blue-1">
-      <div className="flex flex-row gap-5.5 pt-6  pb-9.5">
+      <div className="flex flex-row gap-5.5 pt-6 pb-9.5">
         <Balance />
         <div
           className="flex
