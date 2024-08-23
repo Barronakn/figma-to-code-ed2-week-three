@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { LineChart, Line, ResponsiveContainer } from "recharts";
 import star from "../../assets/icons/star.png";
+import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
 import ellipsis from "../../assets/icons/ellipsis.png";
 import search from "../../assets/icons/search.png";
 import arrow_down from "../../assets/icons/chevron-down.png";
 import { fetchCoins } from "../../data/apicoins";
 import { fetchCategories } from "../../data/categorycoins";
 import { fetchCoinDetails } from "../../data/coinsdetails";
+import CoinModal from "./CoinModal";
 
 const ListCoins = () => {
   const [coins, setCoins] = useState([]);
@@ -17,6 +18,15 @@ const ListCoins = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCoin, setSelectedCoin] = useState(null);
+
+  const data = [
+    { name: "Jan", price: -60 },
+    { name: "Feb", price: -20 },
+    { name: "Mar", price: 80 },
+    { name: "Apr", price: 20 },
+    { name: "Mai", price: 60 },
+    { name: "Mai", price: -60 },
+  ];
 
   useEffect(() => {
     const getCoinsAndCategories = async () => {
@@ -62,6 +72,10 @@ const ListCoins = () => {
     setSelectedCoin(null);
   };
 
+  const removeHTMLTags = (str) => {
+    return str.replace(/<\/?[^>]+(>|$)/g, "");
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -73,8 +87,9 @@ const ListCoins = () => {
   const filteredCoins =
     selectedCategory === "Categories"
       ? coins
-      : coins.filter((coin) => coin.category === selectedCategory);
-
+      : coins.filter((coin) =>
+          coin.categories.some((category) => category === selectedCategory)
+        );
 
   return (
     <div className="flex flex-col gap-8">
@@ -132,6 +147,7 @@ const ListCoins = () => {
             <img src={ellipsis} alt="ellipsis-icon" />
           </div>
         </div>
+
         <table className="min-w-full bg-white dark:bg-dark-blue-1 font-medium text-sm">
           <thead className="bg-gray dark:bg-opacity-10">
             <tr className="border-b border-b-gray dark:border-opacity-15">
@@ -169,20 +185,20 @@ const ListCoins = () => {
                     alt={coin.name}
                     className="w-6 h-6 mr-2"
                   />
-                  <span className="cursor-pointer" onClick={() => openModal(coin)}>
-                    {coin.name} - {coin.symbol.toUpperCase()}
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => openModal(coin)}
+                  >
+                    {coin.name}{" "}
+                    <span className="text-gray-500">
+                      ({coin.symbol.toUpperCase()})
+                    </span>
                   </span>
                 </td>
                 <td className="py-3 px-6 text-right">
                   ${coin.current_price.toLocaleString()}
                 </td>
-                <td
-                  className={`py-3 px-6 text-right ${
-                    coin.price_change_percentage_24h < 0
-                      ? "text-red-500"
-                      : "text-green-500"
-                  }`}
-                >
+                <td className="py-3 px-6 text-right">
                   {coin.price_change_percentage_24h.toFixed(2)}%
                 </td>
                 <td className="py-3 px-6 text-right">
@@ -191,23 +207,18 @@ const ListCoins = () => {
                 <td className="py-3 px-6 text-right">
                   ${coin.market_cap.toLocaleString()}
                 </td>
-                <td className="py-3 px-6 text-right">
-                  <ResponsiveContainer width={100} height={40}>
-                    <LineChart
-                      data={coin.sparkline_in_7d.price.map((p, i) => ({
-                        index: i,
-                        price: p,
-                      }))}
-                    >
-                      <Line
-                        type="monotone"
-                        dataKey="price"
-                        stroke={getSparklineColor(coin.sparkline_in_7d.price)}
-                        dot={false}
-                        strokeWidth={2}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                <td className="py-3 px-6">
+                  <Sparklines
+                    data={coin.sparkline_in_7d.price}
+                    height={50}
+                    width={100}
+                    margin={5}
+                  >
+                    <SparklinesLine
+                      color={getSparklineColor(coin.sparkline_in_7d.price)}
+                    />
+                    <SparklinesSpots />
+                  </Sparklines>
                 </td>
               </tr>
             ))}
@@ -216,19 +227,10 @@ const ListCoins = () => {
       </div>
 
       {isModalOpen && selectedCoin && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-          <div className="w-1/3 h-full bg-white dark:bg-dark-blue-1 shadow-lg p-4">
-            <h2>{selectedCoin.name}</h2>
-            <p>Price: ${selectedCoin.market_data.current_price.usd.toLocaleString()}</p>
-            <p>Market Cap: ${selectedCoin.market_data.market_cap.usd.toLocaleString()}</p>
-            <p>24h High: ${selectedCoin.market_data.high_24h.usd.toLocaleString()}</p>
-            <p>24h Low: ${selectedCoin.market_data.low_24h.usd.toLocaleString()}</p>
-            <p>Description: {selectedCoin.description?.en}</p>
-            <button onClick={closeModal} className="text-black">
-              Close
-            </button>
-          </div>
-        </div>
+        <CoinModal
+          coin={selectedCoin}
+          onClose={closeModal}
+        />
       )}
     </div>
   );
