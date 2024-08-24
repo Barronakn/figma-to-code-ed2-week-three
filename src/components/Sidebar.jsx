@@ -53,7 +53,7 @@ const Sidebar = () => {
                     >
                       <div className="flex flex-row items-center gap-1.5">
                         <img src={link.icon} alt={link.name} />
-                        <span className="capitalize">{link.name}</span>
+                        <span className="capitalize  dark:text-white">{link.name}</span>
                       </div>
                       {link.chevron && (
                         <div>
@@ -74,7 +74,7 @@ const Sidebar = () => {
                     <div>
                       <img className="w-5 h-5" src={sign} alt="Sign-icon" />
                     </div>
-                    <span>Sign</span>
+                    <span className="dark:text-white">Sign</span>
                   </div>
                 </NavLink>
                 <NavLink
@@ -85,7 +85,7 @@ const Sidebar = () => {
                     <div>
                       <img className="w-4 h-4" src={login} alt="Login-icon" />
                     </div>
-                    <span>Login</span>
+                    <span className="dark:text-white">Login</span>
                   </div>
                 </NavLink>
               </div>
@@ -100,7 +100,7 @@ const Sidebar = () => {
                   <img className="rounded-full w-8 h-8" src={avatar} />
                 </div>
                 <div>
-                  <p className="text-xs font-medium">John Doe</p>
+                  <p className="text-xs font-medium dark:text-white">John Doe</p>
                   <span className="text-dark-gray text-xs">
                     johndoe8@gmail.com
                   </span>

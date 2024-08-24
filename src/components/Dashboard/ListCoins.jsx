@@ -99,7 +99,7 @@ const ListCoins = () => {
             <img src={search} alt="search-icon" />
           </div>
           <input
-            className="placeholder:dark:bg-dark-blue-1"
+            className="dark:bg-dark-blue-1"
             type="search"
             name="search"
             placeholder="Search crypto..."
@@ -110,17 +110,17 @@ const ListCoins = () => {
           onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
         >
           <div className="flex flex-row gap-10 items-center">
-            <div>{selectedCategory || "Categories"}</div>
+            <div className=" dark:text-white">{selectedCategory || "Categories"}</div>
             <div>
               <img src={arrow_down} alt="arrow-down-icon" />
             </div>
           </div>
 
           {isCategoryDropdownOpen && (
-            <div className="absolute left-0 top-full mt-2 bg-white dark:bg-dark-blue-1 border border-gray dark:border-opacity-15 rounded-10 w-full z-10 overflow-x-hidden overflow-y-auto h-40">
+            <div className="absolute left-0 top-full mt-2 bg-white dark:bg-dark-blue-1 border border-gray dark:border-opacity-15 rounded-10 w-full dark:text-white z-10 overflow-x-hidden overflow-y-auto h-40">
               <div
                 onClick={() => handleCategorySelect("Categories")}
-                className="px-5 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer hover:bg-gray"
+                className="px-5 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer dark:text-white hover:bg-gray dark:hover:bg-opacity-50"
               >
                 Categories
               </div>
@@ -128,7 +128,7 @@ const ListCoins = () => {
                 <div
                   key={category.category_id}
                   onClick={() => handleCategorySelect(category.name)}
-                  className="px-5 py-2.5 text-nowrap hover:bg-gray dark:hover:bg-gray-700 cursor-pointer"
+                  className="px-5 dark:text-white py-2.5 text-nowrap dark:hover:bg-opacity-50 hover:bg-gray dark:hover:bg-gray-700 cursor-pointer"
                 >
                   {category.name}
                 </div>

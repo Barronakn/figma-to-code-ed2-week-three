@@ -40,7 +40,7 @@ const Trending = () => {
             <div className="flex flex-row items-center gap-1.5"> 
               <img className="w-8 h-8" src={crypto.icon} alt={crypto.name} />
               <div className="font-bold">
-                <div className="text-xs text-dark-gray dark:text-white text-nowrap">{crypto.name}</div>
+                <div className="text-xs text-dark-gray dark:text-white">{crypto.name}</div>
                 <div className="text-xxs text-dark-gray dark:text-gray text-opacity-60">{crypto.symbol}</div>
               </div>
             </div>
