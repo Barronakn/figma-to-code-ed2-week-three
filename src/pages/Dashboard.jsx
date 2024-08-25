@@ -22,7 +22,7 @@ const Dashboard = () => {
                 View more
               </a>
               <div>
-                <img src={chevron_right} alt="chevron-right-icon" />
+                <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={chevron_right} alt="chevron-right-icon" />
               </div>
             </div>
           </div>

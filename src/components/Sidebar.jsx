@@ -19,7 +19,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white  dark:bg-dark-blue-1 z-50 border-r border-r-gray">
+    <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 z-50 border-r border-r-gray">
       {activeMenu && (
         <div className="flex flex-col gap-9">
           <Link
@@ -48,16 +48,22 @@ const Sidebar = () => {
                       className={({ isActive }) =>
                         isActive
                           ? "flex flex-row justify-between items-center text-xs font-bold px-2 py-3 text-white rounded-10"
-                          : "flex flex-row justify-between text-xs font-medium rounded-10 px-2 dark:text-white py-3"
+                          : "flex flex-row justify-between text-xs font-medium rounded-10 px-2 py-3 dark:text-white"
                       }
                     >
                       <div className="flex flex-row items-center gap-1.5">
-                        <img src={link.icon} alt={link.name} />
-                        <span className="capitalize  dark:text-white">{link.name}</span>
+                        <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy"
+                          src={link.icon}
+                          alt={link.name}
+                        />
+                        <span className="capitalize dark:text-white">{link.name}</span>
                       </div>
                       {link.chevron && (
                         <div>
-                          <img src={link.chevron} alt={link.name} />
+                          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy"
+                            src={link.chevron}
+                            alt={link.name}
+                          />
                         </div>
                       )}
                     </NavLink>
@@ -72,7 +78,10 @@ const Sidebar = () => {
                 >
                   <div className="flex flex-row items-center gap-1.5">
                     <div>
-                      <img className="w-5 h-5" src={sign} alt="Sign-icon" />
+                      <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 w-5 h-5 pointer-events-none" loading="lazy"
+                        src={sign}
+                        alt="Sign-icon"
+                      />
                     </div>
                     <span className="dark:text-white">Sign</span>
                   </div>
@@ -83,7 +92,10 @@ const Sidebar = () => {
                 >
                   <div className="flex flex-row items-center gap-1.5">
                     <div>
-                      <img className="w-4 h-4" src={login} alt="Login-icon" />
+                      <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 w-4 h-4  pointer-events-none" loading="lazy"
+                        src={login}
+                        alt="Login-icon"
+                      />
                     </div>
                     <span className="dark:text-white">Login</span>
                   </div>
@@ -97,7 +109,10 @@ const Sidebar = () => {
             >
               <div className="flex flex-row gap-2">
                 <div>
-                  <img className="rounded-full w-8 h-8" src={avatar} />
+                  <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 rounded-full w-8 h-8 pointer-events-none" loading="lazy"
+                    src={avatar}
+                    alt="avatar"
+                  />
                 </div>
                 <div>
                   <p className="text-xs font-medium dark:text-white">John Doe</p>
@@ -107,7 +122,11 @@ const Sidebar = () => {
                 </div>
               </div>
               <div>
-                <img src={chevron_down} alt="chevron_down-icon" />
+                <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none" loading="lazy"
+                  src={chevron_down}
+                  alt="chevron_down-icon"
+                
+                />
               </div>
             </div>
           </div>

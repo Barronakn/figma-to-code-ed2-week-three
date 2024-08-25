@@ -21,7 +21,7 @@ const App = () => {
   const hideSidebarAndNavbar = ['/sign', '/login'].includes(location.pathname);
 
   return (
-    <div className={currentMode === 'Dark' ? 'dark': 'overflow-x-hidden'}>
+    <div className={currentMode === 'Dark' ? 'dark': ''}>
       <div className="flex relative">
         {!hideSidebarAndNavbar && (
           <>
@@ -46,7 +46,7 @@ const App = () => {
           </>
         )}
 
-        <div className={`${hideSidebarAndNavbar ? 'w-full' : 'flex-1'} bg-white min-h-screen`}>
+        <div className={`${hideSidebarAndNavbar ? 'w-full' : 'flex-1'} bg-white min-h-screen overflow-hidden`}>
           <Routes>
             <Route path="/*" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />

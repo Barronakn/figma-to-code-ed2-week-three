@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div className="flex flex-row gap-3 items-center justify-center">
       <div>
-        <img src={logo} alt="logo-tokena" />
+        <img className="pointer-events-none" loading="lazy" src={logo} alt="logo-tokena" />
       </div>
       <div>
         <h2 className="text-dark-2 text-xs font-bold">Tokena</h2>

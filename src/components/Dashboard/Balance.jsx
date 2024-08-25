@@ -1,6 +1,6 @@
 import React from "react";
 import arrow_up from "../../assets/icons/arrow-up.png";
-import arrow_down from "../../assets/icons/arrow-down.png";
+import arrow_down from "../../assets/icons/arrow-down-blue.png";
 
 const Balance = () => {
   return (
@@ -19,11 +19,11 @@ const Balance = () => {
       </div>
       <div className="flex flex-row gap-1.5">
         <button className="px-4 py-2 rounded-10 bg-blue bg-opacity-6 flex flex-row items-center gap-1.5">
-          <img src={arrow_up} alt="arrow-up-icon" />
+          <img className="pointer-events-none" loading="lazy" src={arrow_up} alt="arrow-up-icon" />
           <span className="text-sm font-medium text-blue">Deposit</span>
         </button>
         <button className="px-4 py-2 rounded-10 bg-blue bg-opacity-6 flex flex-row items-center gap-1.5">
-          <img src={arrow_down} alt="arrow-down-icon" />
+          <img className="pointer-events-none" loading="lazy" src={arrow_down} alt="arrow-down-icon" />
           <span className="text-sm font-medium text-blue">Withdraw</span>
         </button>
       </div>

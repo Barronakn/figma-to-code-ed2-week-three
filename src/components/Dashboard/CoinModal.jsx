@@ -26,7 +26,6 @@ const CoinModal = ({ coin, onClose }) => {
         const monthlyData = [];
         const currentYear = new Date().getFullYear();
 
-        // Filtrer les données pour chaque mois de l'année actuelle
         result.prices.forEach((priceData) => {
           const date = new Date(priceData[0]);
           if (date.getFullYear() === currentYear) {
@@ -49,11 +48,6 @@ const CoinModal = ({ coin, onClose }) => {
     return str.replace(/<\/?[^>]+(>|$)/g, "");
   };
 
-  // Déterminer la valeur max et min pour l'axe Y
-  const maxPrice = Math.max(...data.map((d) => d.price));
-  const yAxisMax = maxPrice + 10000;
-  const yAxisMin = -maxPrice - 10000;
-
   return (
     <div className="fixed font-JetBrains inset-0 p-2 bg-black bg-opacity-50 z-50 flex justify-end">
       <div className="w-1/3 h-full flex flex-col gap-6.5 rounded-2xl bg-white dark:bg-dark-blue-1 shadow-lg p-4 overflow-y-auto">
@@ -63,7 +57,7 @@ const CoinModal = ({ coin, onClose }) => {
             onClick={onClose}
             className="cursor-pointer bg-gray bg-opacity-50 p-2.5 rounded-lg text-xl font-bold"
           >
-            <img src={close_icon} alt="close-icon" />
+            <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none" loading="lazy" src={close_icon} alt="close-icon" />
           </div>
         </div>
 
@@ -84,15 +78,8 @@ const CoinModal = ({ coin, onClose }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis
-                  domain={[yAxisMin, yAxisMax]}
-                  tickCount={7}
-                  ticks={[
-                    yAxisMax,
-                    yAxisMax / 2,
-                    0,
-                    yAxisMin / 2,
-                    yAxisMin,
-                  ]}
+                  domain={[-100, 100]}
+                  ticks={[100, 60, 20, 0, -20, -60, -100]}
                 />
                 <Tooltip />
                 <Legend />
@@ -101,7 +88,7 @@ const CoinModal = ({ coin, onClose }) => {
                   dataKey="price"
                   stroke="green"
                   strokeWidth={2}
-                  dot={false} // Désactiver les points sur la ligne
+                  dot={false}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -109,7 +96,7 @@ const CoinModal = ({ coin, onClose }) => {
 
           <div className="flex flex-row justify-between">
             <div className="flex flex-row items-center">
-              <img src={coin.image.small} alt={coin.name} className="w-8 h-8" />
+              <img className="w-8 h-8 pointer-events-none" loading="lazy" src={coin.image.small} alt={coin.name} />
               <h2 className="text-sm font-semibold">{coin.name}</h2>
             </div>
 
@@ -165,7 +152,7 @@ const CoinModal = ({ coin, onClose }) => {
         </div>
 
         <div className="flex flex-row justify-center bg-blue bg-opacity-6 gap-1.5 rounded-10 px-5 py-2.5">
-          <img src={star} alt="star-icon" />
+          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none" loading="lazy" src={star} alt="star-icon" />
           <span className="text-blue text-sm">Add to favorites</span>
         </div>
       </div>

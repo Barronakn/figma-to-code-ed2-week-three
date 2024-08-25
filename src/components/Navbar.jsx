@@ -26,7 +26,7 @@ const Navbar = () => {
 
         <div>
           <button className="flex flex-row items-center rounded-10 text-sm font-medium px-5 py-2.5 gap-1.5 bg-blue text-white dark:text-black">
-            <img src={wallet} alt="wallet-icon" />
+            <img className="pointer-events-none" loading="lazy" src={wallet} alt="wallet-icon" />
             <span className="dark:text-white">Connect wallet</span>
           </button>
         </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="flex flex-row gap-3">
         <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-5 py-2.5">
           <span className="text-gray text-xs font-medium">USD</span>
-          <img src={chevron_up_down} alt="chevron-up-down-icon" />
+          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={chevron_up_down} alt="chevron-up-down-icon" />
         </div>
         <div className="flex flex-row items-center">
           {showMode ? (
@@ -45,14 +45,14 @@ const Navbar = () => {
                 currentMode === "Dark" ? "opacity-100" : "opacity-50"
               }`}
             >
-              <img src={dark_icon} alt="dark-icon" />
+              <img className="pointer-events-none" loading="lazy" src={dark_icon} alt="dark-icon" />
             </div>
           ) : (
             <div
               onClick={handleToggle}
               className="cursor-pointer border border-gray dark:border-opacity-15 px-5 py-2.5 rounded-10"
             >
-              <img src={light_icon} alt="light-icon" />
+              <img className="pointer-events-none" loading="lazy" src={light_icon} alt="light-icon" />
             </div>
           )}
         </div>

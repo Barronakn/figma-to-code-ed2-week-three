@@ -8,7 +8,7 @@ const CoinMarketCard = () => {
     <section className="flex flex-col gap-2.5 p-2.5 dark:bg-dark-blue-2 rounded-xl">
       <div className="flex flex-row gap-2 items-center">
         <div>
-          <img src={coin_market} alt="coinmarket-icon" />
+          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={coin_market} alt="coinmarket-icon" />
         </div>
         <div>
           <p className="text-xs font-semibold dark:text-white">CoinMarketCap</p>
@@ -25,11 +25,11 @@ const CoinMarketCard = () => {
         <p className="text-xs font-medium dark:text-white">The most important upgrade in blockchain history is slated for August. And the outcome of Ethe....</p>
         <div className="flex flex-row gap-2.5">
           <div className="flex flex-row gap-1">
-            <img src={heart} alt="heart-icon" />
+            <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={heart} alt="heart-icon" />
             <span className="text-sm font-medium dark:text-white">5</span>
           </div>
           <div className="flex flex-row gap-1">
-            <img src={comment_icon} alt="comment-icon" />
+            <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={comment_icon} alt="comment-icon" />
             <span className="text-sm font-medium dark:text-white">5</span>
           </div>
         </div>
