@@ -1,6 +1,6 @@
 import { delay } from './utils';
 
-export const fetchCoins = async () => {
+export const fetchAllCoins = async () => {
   try {
     await delay(2000); // Délai de 2 secondes pour éviter les erreurs de quota
     const response = await fetch(
