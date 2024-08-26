@@ -29,7 +29,7 @@ const CoinTable = ({
 
       <div className=" overflow-x-auto">
         <table className="min-w-full bg-white dark:bg-dark-blue-1 font-medium text-sm">
-          <thead className="bg-gray dark:bg-opacity-10">
+          <thead className="bg-gray dark:text-light-gray dark:bg-opacity-10">
             <tr className="border-b border-b-gray dark:border-opacity-15">
               <th className="py-3 px-6 font-medium text-sm text-left"></th>
               <th className="py-3 px-6 font-medium text-sm text-left">#</th>

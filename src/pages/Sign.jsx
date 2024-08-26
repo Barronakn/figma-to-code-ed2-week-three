@@ -6,10 +6,10 @@ const Sign = () => {
   return (
     <div className="flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full mx-auto sm:max-w-xl max-w-72 p-8 md:p-10 2xl:p-12 3xl:p-14 bg-[#ffffff] rounded-2xl shadow-xl">
       
-      <Link to="/dashboard">
+      <Link className="flex flex-row items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7 w-fit mx-auto my-0" to="/dashboard">
           <Logo />
       </Link>
-      <div className="text-sm text-center font-light text-[#6B7280] pb-8 ">
+      <div className="text-sm text-center font-light text-[#6B7280] py-8 ">
         Sign up for an account on Tokena.
       </div>
       <form className="flex flex-col">

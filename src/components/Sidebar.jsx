@@ -10,14 +10,8 @@ import close_menu from "../assets/icons/close.png";
 import Logo from "./Logo";
 
 const Sidebar = () => {
-  const {
-    activeMenu,
-    setActiveMenu,
-    toggleMenu,
-    handleClick,
-    screenSize,
-    currentColor,
-  } = useStateContext();
+  const { activeMenu, setActiveMenu, toggleMenu, handleClick, screenSize } =
+    useStateContext();
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 900) {
       setActiveMenu(false);
@@ -25,9 +19,9 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 z-40 w-60 shadow-md">
+    <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 w-60 shadow-md">
       {activeMenu && (
-        <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 -z-50 justify-end">
+        <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-0 z-50 justify-end">
           <div className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
             <Link
               to="/dashboard"
@@ -42,7 +36,7 @@ const Sidebar = () => {
             </div>
 
             <div className="flex flex-col gap-84">
-              <div className="flex flex-col gap-0.5">
+              <div className="flex flex-col my-0.5">
                 {links.map((item) => (
                   <div key={item.title}>
                     <p className="text-dark-gray text-sm font-medium mb-5">
@@ -53,35 +47,46 @@ const Sidebar = () => {
                         to={`/${link.name}`}
                         key={link.name}
                         onClick={handleCloseSideBar}
-                        style={({ isActive }) => ({
-                          backgroundColor: isActive ? currentColor : "",
-                        })}
                         className={({ isActive }) =>
                           isActive
-                            ? "flex flex-row justify-between items-center text-xs font-bold px-2 py-3 text-white rounded-10"
-                            : "flex flex-row justify-between text-xs font-medium rounded-10 px-2 py-3 dark:text-white"
+                            ? "flex flex-row bg-blue bg-opacity-70 justify-between items-center text-xs font-bold text-white px-2 py-3 rounded-10"
+                            : "flex flex-row hover:bg-blue dark:hover:bg-opacity-70 justify-between text-xs font-medium rounded-10 px-2 py-3 hover:font-bold dark:text-white"
                         }
                       >
                         <div className="flex flex-row items-center gap-1.5">
-                          <img
-                            className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none"
-                            loading="lazy"
-                            src={link.icon}
-                            alt={link.name}
-                          />
-                          <span className="capitalize dark:text-white">
-                            {link.name}
-                          </span>
+                          <NavLink
+                            to={`/${link.name}`}
+                            className={({ isActive }) =>
+                              isActive
+                                ? "filter invert brightness-0 contrast-200 pointer-events-none"
+                                : "dark:filter dark:invert dark:brightness-0 dark:contrast-200 pointer-events-none"
+                            }
+                          >
+                            <img
+                              className=""
+                              loading="lazy"
+                              src={link.icon}
+                              alt={link.name}
+                            />
+                          </NavLink>
+                          <span className="capitalize">{link.name}</span>
                         </div>
                         {link.chevron && (
-                          <div>
+                          <NavLink
+                            to={`/${link.name}`}
+                            className={({ isActive }) =>
+                              isActive
+                                ? "filter invert brightness-0 contrast-200 pointer-events-none"
+                                : ""
+                            }
+                          >
                             <img
-                              className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none"
+                              className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none"
                               loading="lazy"
                               src={link.chevron}
                               alt={link.name}
                             />
-                          </div>
+                          </NavLink>
                         )}
                       </NavLink>
                     ))}
@@ -125,18 +130,16 @@ const Sidebar = () => {
               </div>
 
               <div
-                className="flex items-center gap-2 cursor-pointer"
+                className="dark:bg-dark-blue-2 flex items-center dark:p-2 dark:rounded-10 gap-2 cursor-pointer"
                 onClick={() => handleClick("userProfile")}
               >
                 <div className="flex flex-row gap-2">
-                  <div>
                     <img
-                      className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 rounded-full w-8 h-8 pointer-events-none"
+                      className="rounded-full w-8 h-8 pointer-events-none"
                       loading="lazy"
                       src={avatar}
                       alt="avatar"
                     />
-                  </div>
                   <div>
                     <p className="text-xs font-medium dark:text-white">
                       John Doe

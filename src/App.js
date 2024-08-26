@@ -26,14 +26,14 @@ const App = () => {
         {!hideSidebarAndNavbar && (
           <>
             {activeMenu && (
-              <div className="w-60 fixed sidebar z-30 bg-white pr-20">
+              <div className="w-60 fixed sidebar z-50 bg-white pr-20">
                 <Sidebar />
               </div>
             )}
             <div className={
               `bg-white min-h-screen ${activeMenu 
                 ? 'md:ml-72'
-                : ''}`}
+                : 'flex-2'}`}
             >
               <div className="navbar shadow-sm fixed left-0 top-0 w-full z-20 px-5 lg:pl-64 lg:pr-22 bg-white dark:bg-dark-blue-1">
                 <Navbar />
@@ -42,7 +42,7 @@ const App = () => {
           </>
         )}
 
-        <div className={`${hideSidebarAndNavbar ? 'w-full' : ''} bg-white min-h-screen overflow-x-hidden`}>
+        <div className={`${hideSidebarAndNavbar ? 'w-full' : 'flex-1'} bg-white min-h-screen overflow-x-hidden`}>
           <Routes>
             <Route path="/*" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />

@@ -11,6 +11,9 @@
     box-sizing: border-box;
     outline: none;
     font-family: 'Mona-Sans', sans-serif;
+}
+
+body {
     color: rgba(29, 29, 29, 1);
 }
 

@@ -76,8 +76,8 @@ const ListCoins = () => {
     return lastPrice > firstPrice ? "green" : "red";
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="dark:text-gray">Loading...</div>;
+  if (error) return <div className="dark:text-gray">Error: {error}</div>;
 
   const filteredCoins =
     selectedCategory === "Categories"
@@ -109,8 +109,8 @@ const ListCoins = () => {
           className="relative cursor-pointer w-full sm:w-auto"
           onClick={handleCategoryDropdownToggle}
         >
-          <div className="flex flex-row items-center border border-gray dark:border-opacity-15 bg-white dark:bg-dark-blue-1 dark:text-white rounded-10 px-4 py-2">
-            <span className="text-sm text-dark-gray">{selectedCategory}</span>
+          <div className="flex flex-row items-center border border-gray dark:border-opacity-15 bg-white dark:bg-dark-blue-1 dark:text-light-gray rounded-10 px-4 py-2">
+            <span className="text-sm dark:text-light-gray text-dark-gray">{selectedCategory}</span>
             <div>
             <img
               className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 ml-2 pointer-events-none"
