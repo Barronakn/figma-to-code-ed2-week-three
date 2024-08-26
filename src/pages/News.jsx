@@ -20,7 +20,7 @@ const News = () => {
       <Link className="text-center" to="#">
         <div class="flex flex-row mx-auto my-0 w-fit items-center gap-1 py-2.5 px-3.5  rounded-100 text-sm bg-gray bg-opacity-50 dark:bg-dark-blue-2">
           <span className="dark:text-white">Learn more</span>
-          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100  pointer-events-none" loading="lazy" src={arrow_down} alt="arrow_down-icon" />
+          <img className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none" loading="lazy" src={arrow_down} alt="arrow_down-icon" />
         </div>
       </Link>
     </div>
