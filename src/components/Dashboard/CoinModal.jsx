@@ -50,7 +50,7 @@ const CoinModal = ({ coin, onClose }) => {
 
   return (
     <div className="fixed font-JetBrains inset-0 p-2 bg-black bg-opacity-50 z-50 flex justify-end">
-      <div className="w-1/3 h-full flex flex-col gap-6.5 rounded-2xl bg-white dark:bg-dark-blue-1 shadow-lg p-4 overflow-y-auto">
+      <div className="sm:w-2/3 lg:w-1/3 h-full flex flex-col gap-6.5 rounded-2xl bg-white dark:bg-dark-blue-1 shadow-lg p-4 overflow-y-auto z-50">
         <div className="flex flex-row justify-between items-center">
           <h3 className="text-base font-semibold">{coin.name}</h3>
           <div
@@ -146,7 +146,7 @@ const CoinModal = ({ coin, onClose }) => {
 
         <div className="text-sm font-semibold">
           <p>Description</p>
-          <p className="text-dark-gray">
+          <p className="text-xs text-dark-gray">
             {removeHTMLTags(coin.description.en)}
           </p>
         </div>

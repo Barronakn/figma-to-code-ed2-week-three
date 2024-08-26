@@ -17,7 +17,7 @@ const CoinTable = ({
   getSparklineColor,
 }) => {
   return (
-    <div className="bg-white dark:bg-dark-blue-1 dark:text-white shadow-md rounded-10 border border-gray dark:border-opacity-15 z-0">
+    <div className="bg-white dark:bg-dark-blue-1 dark:text-white shadow-md rounded-10 border border-gray dark:border-opacity-15">
       <div className="flex flex-row items-center justify-between border-b border-b-gray dark:border-opacity-15 p-4">
         <div>
           <h3 className="text-base font-semibold">Market</h3>
@@ -112,7 +112,7 @@ const CoinTable = ({
       </div>
 
 
-      <div className="flex justify-between items-center py-4 px-6">
+      <div className="flex justify-center sm:justify-between items-center py-4 px-6">
         <button
           className="px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-dark-blue-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50"
           onClick={() => paginate(currentPage - 1)}
@@ -122,7 +122,6 @@ const CoinTable = ({
         </button>
 
         <div className="flex flex-row gap-1.5">
-          {/* Bouton pour la première page */}
           <button
             className={`px-4 py-2 rounded-lg ${
               currentPage === 1
@@ -134,7 +133,7 @@ const CoinTable = ({
             1
           </button>
 
-          {/* Si la page actuelle est loin du début, ajoute des points de suspension */}
+
           {currentPage > 3 && <span className="px-2">...</span>}
 
           {/* Affichage des pages autour de la page actuelle */}

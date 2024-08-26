@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import search from "../../assets/icons/search.png";
-import arrow_down from "../../assets/icons/chevron-down.png";
+import arrow_down from "../../assets/icons/chevron-down-gray.png";
 import { fetchCoins } from "../../data/apicoins";
 import { fetchCategories } from "../../data/categorycoins";
 import { fetchCoinDetails } from "../../data/coinsdetails";
@@ -87,9 +87,9 @@ const ListCoins = () => {
         );
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex flex-row items-center justify-between mb-4">
-        <div className="flex flex-row items-center gap-4 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 px-4 py-2 focus:outline-none">
+    <div className="listcoins">
+      <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row items-center justify-between mb-4">
+        <div className="flex flex-row items-center gap-4 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 w-full sm:w-auto px-4 py-2 focus:outline-none">
             <img
               loading="lazy"
               src={search}
@@ -100,30 +100,32 @@ const ListCoins = () => {
             <input
               type="text"
               placeholder="Search crypto..."
-              className="dark:bg-dark-blue-1 w-fit"
+              className="dark:bg-dark-blue-1 placeholder:text-dark-gray w-fit"
             />
           </div>
         </div>
 
         <div
-          className="relative cursor-pointer"
+          className="relative cursor-pointer w-full sm:w-auto"
           onClick={handleCategoryDropdownToggle}
         >
           <div className="flex flex-row items-center border border-gray dark:border-opacity-15 bg-white dark:bg-dark-blue-1 dark:text-white rounded-10 px-4 py-2">
-            <span>{selectedCategory}</span>
+            <span className="text-sm text-dark-gray">{selectedCategory}</span>
+            <div>
             <img
-              className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 ml-2 w-4 h-4 pointer-events-none"
+              className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 ml-2 pointer-events-none"
               loading="lazy"
               src={arrow_down}
               alt="arrow-down-icon"
             />
+            </div>
           </div>
           {isCategoryDropdownOpen && (
-            <div className="absolute mt-2 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 z-10 w-full">
+            <div className="absolute mt-2 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 z-10 w-full h-40 overflow-x-hidden overflow-y-auto">
               {categories.map((category) => (
                 <div
                   key={category.id}
-                  className="px-4 py-2 hover:bg-gray-200 dark:hover:bg-dark-blue-2 cursor-pointer"
+                  className="px-4 py-2 text-sm text-dark-gray dark:hover:bg-dark-blue-2 hover:bg-gray hover:bg-opacity-50 cursor-pointer"
                   onClick={() => handleCategorySelect(category.name)}
                 >
                   {category.name}

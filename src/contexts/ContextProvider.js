@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const StateContext = createContext();
 
@@ -13,6 +13,25 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState('#006EFF');
   const [currentMode, setCurrentMode] = useState('Light');
   const [themeSettings, setThemeSettings] = useState(false); 
+
+  const handleResize = () => {
+    if (window.innerWidth > 1024) {
+      setActiveMenu(true);
+      console.log(activeMenu);
+    } else {
+      setActiveMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setActiveMenu(!activeMenu);
+  };
 
   const setMode = (mode) => {
     setCurrentMode(mode);
@@ -42,7 +61,8 @@ export const ContextProvider = ({ children }) => {
         themeSettings, 
         setThemeSettings,
         setColor, 
-        setMode
+        setMode,
+        toggleMenu
       }}
     >
       {children}
