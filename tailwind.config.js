@@ -6,9 +6,6 @@ module.exports = {
       fontSize: {
         xxs: "10px",
       },
-      fontFamily: {
-        JetBrains: "JetBrains Mono, monospace",
-      },
       colors: {
         "light-gray" : "#F3F4F6",
         "gray" : "#D1D5DB",

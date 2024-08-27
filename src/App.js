@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,21 +7,32 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import { Navbar, Sidebar } from './components';
-import { Activities, Billing, Cards, Dashboard, HelpCenter, Invoces, News, Notifications, Reports, Settings } from './pages';
+import { Navbar, Sidebar } from "./components";
+import {
+  Activities,
+  Billing,
+  Cards,
+  Dashboard,
+  HelpCenter,
+  Invoces,
+  News,
+  Notifications,
+  Reports,
+  Settings,
+} from "./pages";
 
-import { useStateContext } from './contexts/ContextProvider';
-import Sign from './pages/Sign';
-import Login from './pages/Login';
+import { useStateContext } from "./contexts/ContextProvider";
+import Sign from "./pages/Sign";
+import Login from "./pages/Login";
 
 const App = () => {
   const { activeMenu, currentMode } = useStateContext();
   const location = useLocation();
 
-  const hideSidebarAndNavbar = ['/sign', '/login'].includes(location.pathname);
+  const hideSidebarAndNavbar = ["/sign", "/login"].includes(location.pathname);
 
   return (
-    <div className={currentMode === 'Dark' ? 'dark': ''}>
+    <div className={currentMode === "Dark" ? "dark" : ""}>
       <div className="flex flex-col lg:flex-row relative">
         {!hideSidebarAndNavbar && (
           <>
@@ -30,11 +41,7 @@ const App = () => {
                 <Sidebar />
               </div>
             )}
-            <div className={
-              `bg-white ${activeMenu 
-                ? 'md:ml-72'
-                : 'flex-2'}`}
-            >
+            <div className={`bg-white ${activeMenu ? "md:ml-72" : "flex-2"}`}>
               <div className="navbar shadow-sm fixed  left-0 top-0 w-full z-20 px-5 lg:pl-64 lg:pr-22 bg-white dark:bg-dark-blue-1">
                 <Navbar />
               </div>
@@ -42,7 +49,11 @@ const App = () => {
           </>
         )}
 
-        <div className={`${hideSidebarAndNavbar ? 'w-full' : 'flex-1'} bg-white min-h-screen overflow-x-hidden`}>
+        <div
+          className={`${
+            hideSidebarAndNavbar ? "w-full" : "flex-1"
+          } bg-white min-h-screen overflow-x-hidden`}
+        >
           <Routes>
             <Route path="/*" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -63,10 +74,10 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default () => (
   <Router>
-    <App />
+      <App />
   </Router>
 );
