@@ -80,7 +80,7 @@ const CoinTable = ({
                   ${coin.current_price.toLocaleString()}
                 </td>
                 <td className="py-3 px-6 text-right">
-                  {coin.price_change_percentage_24h.toFixed(2)}%
+                  {coin.price_change_percentage_24h?.toFixed(2)}%
                 </td>
                 <td className="py-3 px-6 text-right">
                   ${coin.total_volume.toLocaleString()}

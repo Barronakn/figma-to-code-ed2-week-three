@@ -19,8 +19,8 @@ const Trending = () => {
           return {
             name: coin.item.name,
             symbol: coin.item.symbol,
-            amount: `${coin.item.price_btc.toFixed(8)} BTC`,
-            value: `$${(coin.item.price_btc * 100000000).toFixed(2)}`, // Convert BTC to USD (example conversion)
+            amount: `${coin.item.price_btc?.toFixed(8)} BTC`,
+            value: `$${(coin.item.price_btc * 100000000)?.toFixed(2)}`, // Convert BTC to USD (example conversion)
             change: `${priceChange.toFixed(1)}%`,
             changeType: priceChange >= 0 ? "positive" : "negative",
             icon: coin.item.thumb,
