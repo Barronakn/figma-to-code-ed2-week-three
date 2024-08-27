@@ -49,8 +49,8 @@ const Sidebar = () => {
                         onClick={handleCloseSideBar}
                         className={({ isActive }) =>
                           isActive
-                            ? "flex flex-row bg-blue bg-opacity-70 justify-between items-center text-xs font-bold text-white px-2 py-3 rounded-10"
-                            : "flex flex-row hover:bg-blue dark:hover:bg-opacity-70 justify-between text-xs font-medium rounded-10 px-2 py-3 hover:font-bold dark:text-white"
+                            ? "flex flex-row bg-blue dark:bg-opacity-70 justify-between items-center text-xs font-bold text-white px-2 py-3 rounded-10"
+                            : "flex flex-row hover:bg-blue dark:hover:dark:bg-opacity-70 justify-between text-xs font-medium rounded-10 px-2 py-3 hover:font-bold dark:text-white"
                         }
                       >
                         <div className="flex flex-row items-center gap-1.5">
