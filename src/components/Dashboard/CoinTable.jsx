@@ -123,7 +123,7 @@ const CoinTable = ({
 
         <div className="flex flex-row gap-1.5">
           <button
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg ${
               currentPage === 1
                 ? "bg-blue rounded-10 text-white"
                 : "bg-white text-gray-700 dark:bg-dark-blue-1 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -143,7 +143,7 @@ const CoinTable = ({
               return (
                 <button
                   key={pageNumber}
-                  className={`px-4 py-2 rounded-lg ${
+                  className={`px-2 sm:px-4 py-1 sm:py-2  rounded-lg ${
                     currentPage === pageNumber
                       ? "bg-blue rounded-10 text-white"
                       : "bg-white text-gray-700 dark:bg-dark-blue-1 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -162,7 +162,7 @@ const CoinTable = ({
 
           {/* Bouton pour la dernière page */}
           <button
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg ${
               currentPage === totalPages
                 ? "bg-blue rounded-10 text-white"
                 : "dark:bg-dark-blue-1 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
