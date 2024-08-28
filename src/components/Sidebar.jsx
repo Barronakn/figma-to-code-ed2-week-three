@@ -24,7 +24,7 @@ const Sidebar = () => {
       {activeMenu && (
         <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 z-50 justify-end">
           <div className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row lg:block items-center">
             <Link
               to="/dashboard"
               onClick={handleCloseSideBar}
@@ -35,7 +35,7 @@ const Sidebar = () => {
 
             <div onClick={toggleMenu} className="block lg:hidden">
               <img
-                className="rounded-10 border border-gray lg:hidden p-2"
+                className="rounded-10 border border-gray p-2"
                 src={close_menu}
                 alt="close-menu-icon"
               />
