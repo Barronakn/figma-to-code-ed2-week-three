@@ -12,7 +12,7 @@ import Logo from "./Logo";
 const Sidebar = () => {
   const { activeMenu, setActiveMenu, toggleMenu, handleClick, screenSize } =
     useStateContext();
-    
+
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 1024) {
       setActiveMenu(false);
@@ -24,22 +24,22 @@ const Sidebar = () => {
       {activeMenu && (
         <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 z-50 justify-end">
           <div className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
-            <div className="flex flex-row lg:block items-center">
-            <Link
-              to="/dashboard"
-              onClick={handleCloseSideBar}
-              className="flex items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7"
-            >
-              <Logo />
-            </Link>
+            <div className="flex flex-row lg:block justify-between items-center">
+              <Link
+                to="/dashboard"
+                onClick={handleCloseSideBar}
+                className="flex items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7"
+              >
+                <Logo />
+              </Link>
 
-            <div onClick={toggleMenu} className="block lg:hidden">
-              <img
-                className="rounded-10 border border-gray p-2"
-                src={close_menu}
-                alt="close-menu-icon"
-              />
-            </div>
+              <div onClick={toggleMenu} className="block lg:hidden">
+                <img
+                  className="rounded-10 border border-gray p-2 dark:filter dark:invert dark:brightness-0 dark:contrast-200 pointer-events-none"
+                  src={close_menu}
+                  alt="close-menu-icon"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-84">
