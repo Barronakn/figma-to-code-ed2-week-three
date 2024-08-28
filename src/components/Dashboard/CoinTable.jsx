@@ -182,7 +182,7 @@ const CoinTable = ({
 
       <div className="flex flex-row justify-between items-center py-4 px-6 text-sm text-gray-700 dark:text-white">
         <div>
-          Showing {indexOfFirstItem + 1} to {indexOfLastItem} of {filteredCoins.length} results
+          Showing {indexOfFirstItem <= 0 ? 1 : indexOfFirstItem + 1} to {indexOfLastItem} of {filteredCoins.length} results
         </div>
         <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-5 py-2.5">
           <span className="text-gray text-xs font-medium">Rows</span>

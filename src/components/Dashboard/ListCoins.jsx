@@ -44,7 +44,7 @@ const ListCoins = () => {
     const getCategories = async () => {
       try {
         const categoriesData = await fetchCategories();
-        setCategories([{ id: "all", name: "Categories" }, ...categoriesData]);
+        setCategories([{ category_id: "all", name: "Categories" }, ...categoriesData]);
       } catch (error) {
         setError(error.message);
       }
@@ -133,13 +133,13 @@ const ListCoins = () => {
             alt="search-icon"
             className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none h-5 w-5"
           />
-          <div className="relative">
+          <div className="relative w-full">
             <input
               type="search"
               placeholder="Search crypto..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="dark:bg-dark-blue-1 placeholder:text-dark-gray w-fit"
+              className="dark:bg-dark-blue-1 placeholder:text-dark-gray w-full"
             />
           </div>
         </div>
@@ -165,7 +165,7 @@ const ListCoins = () => {
             <div className="absolute mt-2 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 z-10 w-full h-40 overflow-x-hidden overflow-y-auto">
               {categories.map((category) => (
                 <div
-                  key={category.id}
+                  key={category.category_id}
                   className="px-4 py-2 text-sm text-dark-gray dark:hover:bg-dark-blue-2 hover:bg-gray hover:bg-opacity-50 cursor-pointer"
                   onClick={() => handleCategorySelect(category)}
                 >
