@@ -6,6 +6,7 @@ import { filtreCoinCategory } from "../../data/filtrecoincategory";
 import CoinModal from "./CoinModal";
 import CoinTable from "./CoinTable";
 import { fetchAllCoins } from "../../data/apicoins";
+import { fetchCoinDetails } from "../../data/coinsdetails";
 
 const ListCoins = () => {
   const [coins, setCoins] = useState([]);
@@ -52,17 +53,13 @@ const ListCoins = () => {
   const handleCategorySelect = async (category) => {
     setSelectedCategory(category.name);
     setIsCategoryDropdownOpen(false);
-  
     setLoading(true);
     try {
       if (category.id === "all") {
         const coinsData = await fetchAllCoins();
         setCoins(coinsData);
       } else {
-        if (!category.category_id) {
-          throw new Error('Category id is undefined');
-        }
-        const coinsData = await filtreCoinCategory(category.category_id);
+        const coinsData = await filtreCoinCategory(category.id);
         setCoins(coinsData);
       }
     } catch (error) {
@@ -85,9 +82,11 @@ const ListCoins = () => {
       console.error("Error fetching coin details:", error);
     }
   };
+  
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedCoin(null); // Clear the selected coin when closing the modal
   };
 
   const paginate = (pageNumber) => {
@@ -130,7 +129,7 @@ const ListCoins = () => {
           className="relative cursor-pointer w-full sm:w-auto"
           onClick={handleCategoryDropdownToggle}
         >
-          <div className="flex flex-row items-center border border-gray dark:border-opacity-15 bg-white dark:bg-dark-blue-1 dark:text-light-gray rounded-10 px-4 py-2">
+          <div className="flex flex-row items-center justify-between border border-gray dark:border-opacity-15 bg-white dark:bg-dark-blue-1 dark:text-light-gray rounded-10 px-4 py-2">
             <span className="text-sm dark:text-light-gray text-dark-gray">
               {selectedCategory}
             </span>
@@ -165,7 +164,6 @@ const ListCoins = () => {
         itemsPerPage={itemsPerPage}
         totalPages={totalPages}
         paginate={paginate}
-        filteredCoins={currentItems} // Pass filtered coins to CoinTable
         openModal={openModal}
         indexOfFirstItem={indexOfFirstItem}
         indexOfLastItem={indexOfLastItem}

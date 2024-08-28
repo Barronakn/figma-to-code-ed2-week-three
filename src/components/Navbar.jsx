@@ -18,7 +18,8 @@ const Navbar = () => {
   return (
     <div className="container">
       <div className="flex flex-row items-center justify-between sm:gap-5 gap-1.5 dark:text-gray-200 dark:[#484B52] sm:px-6 py-3 px-0 bg-white dark:bg-dark-blue-1">
-        <div className="block lg:hidden">
+        <div className="flex flex-row gap-5.5">
+        <div className="block tablet:hidden">
           <img
             onClick={toggleMenu}
             className="rounded-10 border border-gray p-2"
@@ -46,6 +47,7 @@ const Navbar = () => {
               <span className="dark:text-white">Connect wallet</span>
             </button>
           </div>
+        </div>
         </div>
 
         <div className="flex flex-row gap-1.5 items-center justify-center sm:gap-3">

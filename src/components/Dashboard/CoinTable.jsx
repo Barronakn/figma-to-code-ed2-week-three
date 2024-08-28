@@ -5,12 +5,12 @@ import ellipsis from "../../assets/icons/ellipsis.png";
 import chevron_up_down from "../../assets/icons/chevron-up-down.png";
 
 const CoinTable = ({
-  currentItems,
+  currentItems = [], // Default to an empty array if undefined
   currentPage,
   itemsPerPage,
   totalPages,
   paginate,
-  filteredCoins,
+  filteredCoins = [], // Default to an empty array if undefined
   openModal,
   indexOfFirstItem,
   indexOfLastItem,
@@ -27,7 +27,7 @@ const CoinTable = ({
         </div>
       </div>
 
-      <div className=" overflow-x-auto">
+      <div className="overflow-x-auto">
         <table className="min-w-full bg-white dark:bg-dark-blue-1 font-medium text-sm">
           <thead className="bg-gray dark:text-light-gray dark:bg-opacity-10">
             <tr className="border-b border-b-gray dark:border-opacity-15">
@@ -62,7 +62,9 @@ const CoinTable = ({
                   {index + 1 + (currentPage - 1) * itemsPerPage}
                 </td>
                 <td className="py-3 px-6 flex flex-row gap-2.5 items-center">
-                  <img className="w-6 h-6 mr-2 pointer-events-none" loading="lazy"
+                  <img
+                    className="w-6 h-6 mr-2 pointer-events-none"
+                    loading="lazy"
                     src={coin.image}
                     alt={coin.name}
                   />
@@ -89,18 +91,18 @@ const CoinTable = ({
                   ${coin.market_cap.toLocaleString()}
                 </td>
                 <td className="py-3 px-6 text-right">
-                  <Sparklines data={coin.sparkline_in_7d.price}>
+                  <Sparklines data={coin.sparkline_in_7d.price || []}>
                     <SparklinesLine
                       style={{
                         strokeWidth: 1,
-                        stroke: getSparklineColor(coin.sparkline_in_7d.price),
+                        stroke: getSparklineColor(coin.sparkline_in_7d.price || []),
                         fill: "none",
                       }}
                     />
                     <SparklinesSpots
                       style={{
-                        stroke: getSparklineColor(coin.sparkline_in_7d.price),
-                        fill: getSparklineColor(coin.sparkline_in_7d.price),
+                        stroke: getSparklineColor(coin.sparkline_in_7d.price || []),
+                        fill: getSparklineColor(coin.sparkline_in_7d.price || []),
                       }}
                     />
                   </Sparklines>
@@ -110,7 +112,6 @@ const CoinTable = ({
           </tbody>
         </table>
       </div>
-
 
       <div className="flex justify-center sm:justify-between items-center py-4 px-6">
         <button
@@ -133,10 +134,8 @@ const CoinTable = ({
             1
           </button>
 
-
           {currentPage > 3 && <span className="px-2">...</span>}
 
-          {/* Affichage des pages autour de la page actuelle */}
           {Array.from({ length: 3 }, (_, i) => {
             const pageNumber = currentPage - 1 + i;
             if (pageNumber > 1 && pageNumber < totalPages) {
@@ -157,10 +156,8 @@ const CoinTable = ({
             return null;
           })}
 
-          {/* Si la page actuelle est loin de la fin, ajoute des points de suspension */}
           {currentPage < totalPages - 2 && <span className="px-2">...</span>}
 
-          {/* Bouton pour la dernière page */}
           <button
             className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg ${
               currentPage === totalPages
@@ -185,8 +182,8 @@ const CoinTable = ({
       <div className="flex flex-row justify-between items-center py-4 px-6 text-sm text-gray-700 dark:text-white">
         <div>
           Showing {indexOfFirstItem + 1} to{" "}
-          {Math.min(indexOfLastItem, filteredCoins.length)} of{" "}
-          {filteredCoins.length} results
+          {Math.min(indexOfLastItem, filteredCoins?.length || 0)} of{" "}
+          {filteredCoins?.length || 0} results
         </div>
         <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-5 py-2.5">
           <span className="text-gray text-xs font-medium">Rows</span>
