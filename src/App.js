@@ -42,7 +42,7 @@ const App = () => {
               </div>
             )}
             <div className={`bg-white ${activeMenu ? "md:ml-72" : "flex-2"}`}>
-              <div className="navbar shadow-sm fixed  left-0 top-0 w-full z-20 px-5 lg:pl-64 lg:pr-22 bg-white dark:bg-dark-blue-1">
+              <div className="navbar shadow-sm fixed left-0 top-0 w-full z-20 lg:pl-64 lg:pr-22 px-5 bg-white dark:bg-dark-blue-1">
                 <Navbar />
               </div>
             </div>
