@@ -5,12 +5,12 @@ import ellipsis from "../../assets/icons/ellipsis.png";
 import chevron_up_down from "../../assets/icons/chevron-up-down.png";
 
 const CoinTable = ({
-  currentItems = [], // Default to an empty array if undefined
+  currentItems = [], 
   currentPage,
   itemsPerPage,
   totalPages,
   paginate,
-  filteredCoins = [], // Default to an empty array if undefined
+  filteredCoins = [], 
   openModal,
   indexOfFirstItem,
   indexOfLastItem,
@@ -113,7 +113,7 @@ const CoinTable = ({
         </table>
       </div>
 
-      <div className="flex justify-center sm:justify-between items-center py-4 px-6">
+      {currentPage > 1 && (<div className="flex justify-center sm:justify-between items-center py-4 px-6">
         <button
           className="px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-dark-blue-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-50"
           onClick={() => paginate(currentPage - 1)}
@@ -177,13 +177,13 @@ const CoinTable = ({
         >
           &gt;
         </button>
-      </div>
+      </div>)}
 
       <div className="flex flex-row justify-between items-center py-4 px-6 text-sm text-gray-700 dark:text-white">
         <div>
           Showing {indexOfFirstItem + 1} to{" "}
-          {Math.min(indexOfLastItem, filteredCoins?.length || 0)} of{" "}
-          {filteredCoins?.length || 0} results
+          {Math.min(indexOfLastItem, filteredCoins?.length || 1)} of{" "}
+          {filteredCoins?.length || 1} results
         </div>
         <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-5 py-2.5">
           <span className="text-gray text-xs font-medium">Rows</span>

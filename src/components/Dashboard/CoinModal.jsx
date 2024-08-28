@@ -155,7 +155,7 @@ const CoinModal = ({ coin, onClose }) => {
 
         <div className="text-sm font-semibold dark:text-light-gray">
           <p>Description</p>
-          <p className="text-xs text-gray">
+          <p className="text-xs text-dark-gray">
             {removeHTMLTags(coin.description.en)}
           </p>
         </div>

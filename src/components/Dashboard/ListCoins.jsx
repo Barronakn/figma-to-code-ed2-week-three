@@ -10,6 +10,7 @@ import { fetchCoinDetails } from "../../data/coinsdetails";
 
 const ListCoins = () => {
   const [coins, setCoins] = useState([]);
+  const [filteredCoins, setFilteredCoins] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Categories");
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
@@ -18,15 +19,17 @@ const ListCoins = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(coins.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredCoins.length / itemsPerPage);
 
   useEffect(() => {
     const getAllCoins = async () => {
       try {
         const coinsData = await fetchAllCoins();
         setCoins(coinsData);
+        setFilteredCoins(coinsData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -55,18 +58,33 @@ const ListCoins = () => {
     setIsCategoryDropdownOpen(false);
     setLoading(true);
     try {
-      if (category.id === "all") {
-        const coinsData = await fetchAllCoins();
-        setCoins(coinsData);
+      let coinsData;
+      if (category.category_id === "all") {
+        coinsData = await fetchAllCoins();
       } else {
-        const coinsData = await filtreCoinCategory(category.id);
-        setCoins(coinsData);
+        coinsData = await filtreCoinCategory(category.category_id);
       }
+      setCoins(coinsData);
+      setFilteredCoins(
+        coinsData.filter((coin) =>
+          coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    setFilteredCoins(
+      coins.filter((coin) =>
+        coin.name.toLowerCase().includes(value.toLowerCase())
+      )
+    );
   };
 
   const handleCategoryDropdownToggle = () => {
@@ -82,11 +100,10 @@ const ListCoins = () => {
       console.error("Error fetching coin details:", error);
     }
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedCoin(null); // Clear the selected coin when closing the modal
+    setSelectedCoin(null);
   };
 
   const paginate = (pageNumber) => {
@@ -95,7 +112,7 @@ const ListCoins = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = coins.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredCoins.slice(indexOfFirstItem, indexOfLastItem);
 
   const getSparklineColor = (sparkline) => {
     const firstPrice = sparkline[0];
@@ -118,8 +135,10 @@ const ListCoins = () => {
           />
           <div className="relative">
             <input
-              type="text"
+              type="search"
               placeholder="Search crypto..."
+              value={searchTerm}
+              onChange={handleSearchChange}
               className="dark:bg-dark-blue-1 placeholder:text-dark-gray w-fit"
             />
           </div>
