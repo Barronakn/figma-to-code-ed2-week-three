@@ -110,10 +110,10 @@ const ListCoins = () => {
     setCurrentPage(pageNumber);
   };
 
-  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfLastItem = Math.min(currentPage * itemsPerPage, filteredCoins.length);
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredCoins.slice(indexOfFirstItem, indexOfLastItem);
-
+  
   const getSparklineColor = (sparkline) => {
     const firstPrice = sparkline[0];
     const lastPrice = sparkline[sparkline.length - 1];
@@ -182,6 +182,7 @@ const ListCoins = () => {
         currentPage={currentPage}
         itemsPerPage={itemsPerPage}
         totalPages={totalPages}
+        filteredCoins={filteredCoins}
         paginate={paginate}
         openModal={openModal}
         indexOfFirstItem={indexOfFirstItem}

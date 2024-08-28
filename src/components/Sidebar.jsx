@@ -22,7 +22,7 @@ const Sidebar = () => {
   return (
     <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 w-60 shadow-md">
       {activeMenu && (
-        <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 z-50 justify-end">
+        <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 lg:bg-opacity-0 z-50 justify-end">
           <div className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
             <div className="flex flex-row lg:block justify-between items-center">
               <Link
