@@ -11,7 +11,6 @@ export const fetchCategories = async () => {
       name: category.name
     }));
   } catch (error) {
-    console.error('Error fetching categories:', error);
     return [];
   }
 };

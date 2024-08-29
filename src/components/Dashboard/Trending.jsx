@@ -19,8 +19,8 @@ const Trending = () => {
           return {
             name: coin.item.name,
             symbol: coin.item.symbol,
-            amount: `${coin.item.price_btc?.toFixed(8)} BTC`,
-            value: `$${(coin.item.price_btc * 100000000)?.toFixed(2)}`, // Convert BTC to USD (example conversion)
+            amount: `${coin.item.price_btc?.toFixed(8)}`,
+            value: `$${(coin.item.price_btc * 100000000)?.toFixed(2)}`, // Convert BTC to USD
             change: `${priceChange.toFixed(1)}%`,
             changeType: priceChange >= 0 ? "positive" : "negative",
             icon: coin.item.thumb,
@@ -120,6 +120,8 @@ const Trending = () => {
             <div className="font-bold">
               <div className="text-xs text-dark-gray dark:text-white">
                 {crypto.amount}
+                {' '}
+                {crypto.symbol}
               </div>
               <div className="text-xxs text-dark-gray text-opacity-60 dark:text-gray">
                 {crypto.value}

@@ -11,8 +11,8 @@ export const filtreCoinCategory = async (categoryId) => {
     if (!response.ok) {
       if (response.status === 429) {
         console.warn(`Rate limit hit. Retrying after delay...`);
-        await delay(3000);  // Augmenter le délai à 3 secondes en cas d'erreur 429
-        return await filtreCoinCategory(categoryId);  // Réessayer la demande
+        await delay(3000);  
+        return await filtreCoinCategory(categoryId); 
       }
       throw new Error(`Error fetching coins for category ${categoryId}: ${response.statusText}`);
     }
@@ -20,7 +20,6 @@ export const filtreCoinCategory = async (categoryId) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`Error fetching coins for category ${categoryId}:`, error);
-    return [];  // Retourner un tableau vide en cas d'erreur
+    return []; 
   }
 };

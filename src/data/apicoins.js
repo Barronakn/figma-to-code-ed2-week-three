@@ -12,7 +12,6 @@ export const fetchAllCoins = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching coins:', error);
     throw error;
   }
 };
