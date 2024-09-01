@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
-      <div className="flex flex-col lg:flex-row relative">
+      <div className="flex flex-col lg:flex-row relative dark:bg-dark-blue-1">
         {!hideSidebarAndNavbar && (
           <>
             {activeMenu && (
@@ -52,7 +52,7 @@ const App = () => {
         <div
           className={`${
             hideSidebarAndNavbar ? "w-full" : "flex-1"
-          } bg-white min-h-screen overflow-x-hidden`}
+          } bg-white min-h-screen overflow-x-hidden  dark:bg-dark-blue-1`}
         >
           <Routes>
             <Route path="/*" element={<Navigate to="/dashboard" />} />
