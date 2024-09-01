@@ -15,11 +15,24 @@ import { fetchDaysCoinData } from "../../data/dayscoinsdata";
 
 const CoinModal = ({ coin, onClose }) => {
   const [data, setData] = useState([]);
+  const [yAxisTicks, setYAxisTicks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const monthlyData = await fetchDaysCoinData(coin.id);
+
+        // Calculate the low and high prices
+        const prices = monthlyData.map(item => item.price);
+        const lowPrice = Math.min(...prices);
+        const highPrice = Math.max(...prices);
+
+        // Calculate the Y-Axis ticks
+        const lowPricePlus10 = lowPrice + 10;
+        const highPriceMinus10 = highPrice - 10;
+
+        setYAxisTicks([lowPrice, lowPricePlus10, highPriceMinus10, highPrice]);
+
         setData(monthlyData);
       } catch (error) {
         console.error("Erreur lors de la récupération des données du coin:", error);
@@ -70,8 +83,7 @@ const CoinModal = ({ coin, onClose }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis
-                  domain={[-100, 100]}
-                  ticks={[100, 60, 20, 0, -20, -60, -100]}
+                  ticks={yAxisTicks}
                 />
                 <Tooltip />
                 <Legend />
