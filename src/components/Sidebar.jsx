@@ -10,24 +10,16 @@ import close_menu from "../assets/icons/close.png";
 import Logo from "./Logo";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu, toggleMenu, handleClick, screenSize } =
-    useStateContext();
-
-  const handleCloseSideBar = () => {
-    if (activeMenu && screenSize <= 1024) {
-      setActiveMenu(false);
-    }
-  };
+  const { activeMenu, toggleMenu, handleClick } = useStateContext();
 
   return (
     <div className="p-3.5 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 w-60 shadow-md">
       {activeMenu && (
-        <div className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 lg:bg-opacity-0 z-50 justify-end">
-          <div className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
+        <div onClick={toggleMenu} className="fixed inset-0 bg-black w-auto lg:w-60 bg-opacity-50 lg:bg-opacity-0 z-50 justify-end">
+          <div onClick={(e)=>e.stopPropagation()} className="flex flex-col bg-white w-60 p-3.5 gap-9 z-0 h-screen hover:overflow-y-auto overflow-y-hidden dark:text-white dark:bg-dark-blue-1 ">
             <div className="flex flex-row lg:block justify-between items-center">
               <Link
                 to="/dashboard"
-                onClick={handleCloseSideBar}
                 className="flex items-center gap-3 rounded-10 mt-4 px-4 py-3 bg-blue bg-opacity-7"
               >
                 <Logo />
@@ -35,7 +27,7 @@ const Sidebar = () => {
 
               <div onClick={toggleMenu} className="block lg:hidden">
                 <img
-                  className="rounded-10 border border-gray p-2 dark:filter dark:invert dark:brightness-0 dark:contrast-200 pointer-events-none"
+                  className="rounded-10 border border-gray p-2 dark:filter dark:invert dark:brightness-0 cursor-pointer dark:contrast-200 pointer-events-none"
                   src={close_menu}
                   alt="close-menu-icon"
                 />
@@ -51,9 +43,9 @@ const Sidebar = () => {
                     </p>
                     {item.links.map((link) => (
                       <NavLink
+                      onClick={toggleMenu}
                         to={`/${link.name}`}
                         key={link.name}
-                        onClick={handleCloseSideBar}
                         className={({ isActive }) =>
                           isActive
                             ? "flex flex-row bg-blue dark:bg-opacity-70 justify-between items-center text-xs font-bold text-white px-2 py-3 rounded-10"

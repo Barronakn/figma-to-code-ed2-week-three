@@ -47,8 +47,8 @@ const CoinModal = ({ coin, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 p-2 bg-black bg-opacity-50 z-50 flex justify-end">
-      <div className="sm:w-2/3 lg:w-1/3 h-full flex flex-col gap-6.5 rounded-2xl bg-white dark:bg-dark-blue-1 shadow-lg p-4 overflow-y-auto z-50">
+    <div onClick={onClose} className="fixed inset-0 p-2 bg-black bg-opacity-50 z-50 flex justify-end">
+      <div onClick={(e)=> e.stopPropagation()} className="sm:w-2/3 lg:w-1/3 h-full flex flex-col gap-6.5 rounded-2xl bg-white dark:bg-dark-blue-1 shadow-lg p-4 overflow-y-auto z-50">
         <div className="flex flex-row justify-between items-center">
           <h3 className="text-base dark:text-white font-semibold">
             {coin.name}
