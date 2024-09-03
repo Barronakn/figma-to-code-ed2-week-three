@@ -7,24 +7,8 @@ import chevron_up_down from "../assets/icons/chevron-up-down.png";
 import menu from "../assets/icons/menu.png";
 
 const Navbar = () => {
-  const { currentMode, setMode, toggleMenu } = useStateContext();
+  const { exchangeRates, selectedCurrency, setSelectedCurrency, toggleMenu, currentMode, setMode } = useStateContext();
   const [showMode, setShowMode] = useState(true);
-  const [exchangeRates, setExchangeRates] = useState({});
-  const [selectedCurrency, setSelectedCurrency] = useState("usd"); // Set to the unit value for USD
-
-  useEffect(() => {
-    const fetchExchangeRates = async () => {
-      try {
-        const response = await fetch("https://api.coingecko.com/api/v3/exchange_rates");
-        const data = await response.json();
-        setExchangeRates(data.rates);
-      } catch (error) {
-        console.error("Failed to fetch exchange rates:", error);
-      }
-    };
-
-    fetchExchangeRates();
-  }, []);
 
   const handleToggle = () => {
     setShowMode(!showMode);
@@ -71,27 +55,26 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-row gap-1.5 items-center justify-center sm:gap-3">
-        <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-2 sm:px-5 sm:py-2.5">
-          <select
-            value={selectedCurrency}
-            onChange={handleCurrencyChange}
-            className="text-gray text-xs text-center w-20 text-nowrap font-medium bg-transparent border-none outline-none"
-          >
-            {Object.keys(exchangeRates).map((currency) => (
-              <option key={currency} value={currency}>
-                {exchangeRates[currency].name}
-              </option>
-            ))}
-          </select>
-          <img
-            className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none"
-            loading="lazy"
-            src={chevron_up_down}
-            alt="chevron-up-down-icon"
-          />
-        </div>
-        
-         <div className="flex flex-row justify-center items-center">
+          <div className="flex flex-row gap-0.5 items-center cursor-pointer border border-gray dark:border-opacity-15 p-2 rounded-10 px-2 sm:px-5 sm:py-2.5">
+            <select
+              value={selectedCurrency}
+              onChange={handleCurrencyChange}
+              className="text-xs text-center w-20 text-nowrap font-medium bg-transparent border-none outline-none"
+            >
+              {Object.keys(exchangeRates).map((currency) => (
+                <option key={currency} value={currency}>
+                  {exchangeRates[currency].name}
+                </option>
+              ))}
+            </select>
+            <img
+              className="dark:filter dark:invert dark:brightness-0 dark:contrast-100 pointer-events-none"
+              loading="lazy"
+              src={chevron_up_down}
+              alt="chevron-up-down-icon"
+            />
+          </div>
+          <div className="flex flex-row justify-center items-center">
             {showMode ? (
               <div
                 onClick={handleToggle}
@@ -127,6 +110,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-         

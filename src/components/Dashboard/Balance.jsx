@@ -1,14 +1,25 @@
 import React from "react";
 import arrow_up from "../../assets/icons/arrow-up.png";
 import arrow_down from "../../assets/icons/arrow-down-blue.png";
+import { useStateContext } from "../../contexts/ContextProvider";
 
 const Balance = () => {
+  const { exchangeRates, selectedCurrency } = useStateContext();
+
+  // Valeur de balance en BTC
+  const btcValue = 1082.20;
+  // Conversion de BTC à la devise sélectionnée
+  const conversionRate = exchangeRates[selectedCurrency]?.value || 1;
+  const convertedBalance = (btcValue * conversionRate).toFixed(2);
+
   return (
     <div className="rounded-xl border border-gray dark:border-opacity-15 p-3 flex flex-col gap-2">
       <div className="flex flex-col gap-1.5">
         <div className="text-xl md:text-lg font-semibold dark:text-gray">Balance</div>
         <div className="flex flex-col sm:flex-row justify-between">
-          <div className="text-lg font-bold dark:text-white">$63,755,200</div>
+          <div className="text-lg font-bold dark:text-white">
+             <p className="text-nowrap">{exchangeRates[selectedCurrency]?.unit || "BTC"}{convertedBalance}</p>
+          </div>
           <div className="text-green-500 flex flex-row items-center gap-1.5">
             <span className="text-xs md:text-xxs text-green py-1 px-1.1 bg-green bg-opacity-15 rounded-100 font-semibold">
               +2.3%
