@@ -11,7 +11,6 @@ export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
   const [currentMode, setCurrentMode] = useState('Light');
-  const [themeSettings, setThemeSettings] = useState(false); 
   const [exchangeRates, setExchangeRates] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState("usd");
 
@@ -67,8 +66,6 @@ export const ContextProvider = ({ children }) => {
         screenSize, 
         setScreenSize,
         currentMode,
-        themeSettings, 
-        setThemeSettings,
         setMode,
         toggleMenu,
         exchangeRates,
