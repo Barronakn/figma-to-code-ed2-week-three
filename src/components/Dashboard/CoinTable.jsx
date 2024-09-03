@@ -78,15 +78,15 @@ const CoinTable = ({
                     src={coin.image}
                     alt={coin.name}
                   />
-                  <span
-                    className="cursor-pointer"
+                  <p
+                    className="cursor-pointer lg:text-nowrap text-wrap"
                     onClick={() => openModal(coin)}
                   >
                     {coin.name}{" "}
                     <span className="text-gray-500">
                       ({coin.symbol.toUpperCase()})
                     </span>
-                  </span>
+                  </p>
                 </td>
                 <td className="py-3 px-6 text-right">
                   ${coin.current_price.toLocaleString()}
