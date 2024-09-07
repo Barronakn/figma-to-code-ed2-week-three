@@ -56,7 +56,6 @@ const ListCoins = () => {
   const handleCategorySelect = async (category) => {
     setSelectedCategory(category.name);
     setIsCategoryDropdownOpen(false);
-    setLoading(true);
     try {
       let coinsData;
       if (category.category_id === "all") {
@@ -64,7 +63,6 @@ const ListCoins = () => {
       } else {
         coinsData = await filtreCoinCategory(category.category_id);
       }
-      setCoins(coinsData);
       setFilteredCoins(
         coinsData.filter((coin) =>
           coin.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -72,8 +70,6 @@ const ListCoins = () => {
       );
     } catch (error) {
       setError(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -125,6 +121,7 @@ const ListCoins = () => {
 
   return (
     <div className="listcoins">
+      {/* La partie de recherche et de sélection de catégories reste ici */}
       <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row items-center justify-between mb-4">
         <div className="flex flex-row items-center gap-4 bg-white dark:bg-dark-blue-1 dark:text-white border border-gray dark:border-opacity-15 rounded-10 w-full sm:w-auto px-4 py-2 focus:outline-none">
           <img

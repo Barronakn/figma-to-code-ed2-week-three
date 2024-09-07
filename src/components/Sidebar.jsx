@@ -43,7 +43,6 @@ const Sidebar = () => {
                     </p>
                     {item.links.map((link) => (
                       <NavLink
-                      onClick={toggleMenu}
                         to={`/${link.name}`}
                         key={link.name}
                         className={({ isActive }) =>

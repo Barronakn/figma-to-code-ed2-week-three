@@ -79,7 +79,7 @@ const CoinTable = ({
                     alt={coin.name}
                   />
                   <p
-                    className="cursor-pointer lg:text-nowrap text-wrap"
+                    className="cursor-pointer"
                     onClick={() => openModal(coin)}
                   >
                     {coin.name}{" "}

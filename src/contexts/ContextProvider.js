@@ -10,7 +10,8 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
-  const [currentMode, setCurrentMode] = useState('Light');
+  
+  const [currentMode, setCurrentMode] = useState(localStorage.getItem('themeMode') || 'Light');
   const [exchangeRates, setExchangeRates] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState("usd");
 
@@ -27,6 +28,14 @@ export const ContextProvider = ({ children }) => {
 
     fetchExchangeRates();
   }, []);
+
+  useEffect(() => {
+    if (currentMode === 'Dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [currentMode]);
 
   const handleResize = () => {
     if (window.innerWidth > 1024) {
@@ -51,7 +60,6 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem('themeMode', mode);
   };
 
-
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
@@ -63,7 +71,7 @@ export const ContextProvider = ({ children }) => {
         setActiveMenu,
         isClicked,
         handleClick,
-        screenSize, 
+        screenSize,
         setScreenSize,
         currentMode,
         setMode,
